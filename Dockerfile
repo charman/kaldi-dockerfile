@@ -7,5 +7,5 @@ RUN apt-get update && \
     ln -s -f bash /bin/sh
 
 RUN git clone https://github.com/kaldi-asr/kaldi /opt/kaldi
-RUN cd /opt/kaldi/tools && make
-RUN cd /opt/kaldi/src && ./configure && make depend && make
+RUN cd /opt/kaldi/tools && make && find /opt/kaldi/tools -type f -name "*.o" -delete
+RUN cd /opt/kaldi/src && ./configure && make depend && make && find /opt/kaldi/src -type f -name "*.o" -delete
